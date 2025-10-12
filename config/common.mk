@@ -155,6 +155,8 @@ include vendor/edith/config/packages.mk
 
 include vendor/edith/config/version.mk
 
+include vendor/edith/config/ota.mk
+
 # Include edithUI
 include vendor/edithui/config.mk
 

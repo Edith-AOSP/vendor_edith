@@ -97,12 +97,6 @@ endif
 endif
 
 # SetupWizard
-#PRODUCT_PACKAGES += \
-#    Updater
-
-PRODUCT_COPY_FILES += \
-    vendor/edith/prebuilt/common/etc/init/init.edith-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.edith-updater.rc
-
 PRODUCT_PRODUCT_PROPERTIES += \
     setupwizard.theme=glif_v4 \
     setupwizard.feature.day_night_mode_enabled=true
