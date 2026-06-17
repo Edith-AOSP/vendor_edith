@@ -7,7 +7,7 @@ soong_config_module_type {
 }
 
 bootanimation_aconfig_values {
-    name: "aconfig-values-edith-bp4a-com.android.graphics.bootanimation.flags-all",
+    name: "aconfig-values-edith-cp2a-com.android.graphics.bootanimation.flags-all",
     package: "com.android.graphics.bootanimation.flags",
     srcs: [],
     soong_config_variables: {
