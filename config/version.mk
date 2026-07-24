@@ -1,45 +1,16 @@
-PRODUCT_VERSION_MAJOR = 24
-PRODUCT_VERSION_MINOR = 0
+EDITH_HOST_TIME := $(shell date +"%Y%m%d")
 
-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
-endif
+EDITH_BUILD_TYPE ?= Community
 
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+EDITH_VERSION_NUMBER := 17.0.0
 
-ifndef LINEAGE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
-    endif
-endif
+EDITH_BUILD_VERSION := edith_$(EDITH_BUILD)-$(EDITH_VERSION_NUMBER)-$(EDITH_HOST_TIME)-$(EDITH_BUILD_TYPE)
+EDITH_BUILD_NUMBER := $(EDITH_VERSION_NUMBER).$(EDITH_HOST_TIME)
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
-endif
-
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
-
-LINEAGE_VERSION_SUFFIX := $(LINEAGE_BUILD_DATE)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-
-# Internal version
-LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# Display version
-LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# LineageOS version properties
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE)
+# Edith Build information properties
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+   ro.edith.device=$(EDITH_BUILD) \
+   ro.edith.version=$(EDITH_VERSION_NUMBER) \
+   ro.edith.build.version=$(EDITH_BUILD_VERSION) \
+   ro.edith.build.number=$(EDITH_BUILD_NUMBER) \
+   ro.edith.build.type=$(EDITH_BUILD_TYPE)
