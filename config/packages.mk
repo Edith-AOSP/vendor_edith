@@ -60,6 +60,10 @@ endif
 PRODUCT_PACKAGES += \
     Launcher3Overlay
 
+# Theme picker
+PRODUCT_PACKAGES += \
+    ThemePicker
+
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/edith/overlay/common
