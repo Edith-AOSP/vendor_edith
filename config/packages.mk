@@ -62,7 +62,8 @@ PRODUCT_PACKAGES += \
 
 # Theme picker
 PRODUCT_PACKAGES += \
-    ThemePicker
+    ThemePicker \
+    ThemesStub
 
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += \
