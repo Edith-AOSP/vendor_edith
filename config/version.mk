@@ -1,4 +1,4 @@
-EDITH_HOST_TIME := $(shell date +"%Y%m%d")
+EDITH_HOST_TIME := $(shell date +"%Y%m%d-%H%M")
 
 EDITH_BUILD_TYPE ?= Community
 
