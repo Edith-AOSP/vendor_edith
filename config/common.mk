@@ -160,6 +160,6 @@ include vendor/edith/config/ota.mk
 # Include edithUI
 include vendor/edithui/config.mk
 
--include vendor/edith-sign/keys/keys.mk
+-include vendor/edith-keys/keys/keys.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
