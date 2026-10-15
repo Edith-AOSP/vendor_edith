@@ -153,13 +153,13 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 include vendor/edith/config/packages.mk
 
+-include vendor/edith-keys/keys/keys.mk
+
 include vendor/edith/config/version.mk
 
 include vendor/edith/config/ota.mk
 
 # Include edithUI
 include vendor/edithui/config.mk
-
--include vendor/edith-keys/keys/keys.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
