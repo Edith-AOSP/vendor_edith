@@ -118,6 +118,9 @@ endif
 #PRODUCT_PACKAGES += \
 #    SetupWizard
 
+PRODUCT_PACKAGES += \
+    GameSpace
+
 # Telephony packages
 PRODUCT_PACKAGES += \
     Stk

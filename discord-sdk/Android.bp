@@ -1,0 +1,32 @@
+// Discord Social SDK 1.10.19337, Android arm64 only.
+// Binaries are not redistributable in the public GameSpace repo; keep them here.
+
+cc_library_headers {
+    name: "libdiscord_partner_sdk_headers",
+    export_include_dirs: ["include"],
+}
+
+cc_prebuilt_library_shared {
+    name: "libdiscord_partner_sdk",
+    arch: {
+        arm64: {
+            srcs: ["lib/arm64-v8a/libdiscord_partner_sdk.so"],
+        },
+    },
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+}
+
+java_import {
+    name: "discord_partner_sdk_java",
+    jars: ["libs/discord_partner_sdk.jar"],
+    host_supported: false,
+}
+
+java_import {
+    name: "libwebrtc_java",
+    jars: ["libs/libwebrtc.jar"],
+    host_supported: false,
+}
