@@ -17,6 +17,17 @@ PRODUCT_PACKAGES += \
     Aperture
 endif
 
+# Face unlock
+TARGET_FACE_UNLOCK_SUPPORTED ?= true
+
+ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
+PRODUCT_PACKAGES += \
+    FaceUnlock
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.face.sense_service=true
+endif
+
 # Component overrides
 PRODUCT_PACKAGES += \
     edith-component-overrides.xml
@@ -120,6 +131,11 @@ endif
 
 PRODUCT_PACKAGES += \
     GameSpace
+
+# Freeform
+PRODUCT_PACKAGES += \
+    LMOFreeform \
+    LMOFreeformSidebar
 
 # Telephony packages
 PRODUCT_PACKAGES += \
